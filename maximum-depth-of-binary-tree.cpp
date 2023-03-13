@@ -104,14 +104,19 @@ void printTree(TreeNode *root) {
   cout << endl;
 }
 
+// Runtime 4 ms Beats 93.19%
+// Memory 19 MB Beats 19.69 %
 int maxDepth(TreeNode *root) {
-  int depth;
-  return 0;
+  if (root == nullptr)
+    return 0;
+  return (1 + max(maxDepth(root->left), maxDepth(root->right)));
 }
 
 int main(int argc, char const *argv[]) {
   TreeNode *root = createTree({3, 9, 20, NULL, NULL, 15, 7});
   // TreeNode *root = createTree({1, NULL, 2});
   printTree(root);
+
+  cout << "Depth: " << maxDepth(root) << endl;
   return 0;
 }
